@@ -12,7 +12,6 @@ class GamesController < ApplicationController
 
     def create 
         @game = current_user.games.build(game_params)
-        binding.pry
         if @game.save 
             redirect_to games_path 
         else
@@ -20,6 +19,17 @@ class GamesController < ApplicationController
         end
 
     end
+
+    def index 
+        @games = Game.all 
+    end
+
+    def show 
+        @game = Game.find_by_id(params[:id])
+        redirect_to games_path if !@game
+    end
+
+
 
 
     private 

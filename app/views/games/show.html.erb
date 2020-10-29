@@ -1,0 +1,8 @@
+<h1><%= @game.title %></h1>
+<h2>By: <%= link_to @game.user.username, user_path(@game.user)%></h2>
+
+<h3>Genre: <%= @game.genre.try(:name) %></h3>
+
+
+<div><%= @game.description %></div>
+
