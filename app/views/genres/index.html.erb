@@ -1,0 +1,11 @@
+<ul>
+  <% @genres.each do |g| %>
+    <li><%= link_to g.name, genre_path(g) %>
+    <ol>
+      <% g.games.each do |game| %>
+        <li><%= link_to game.title, game_path(game) %></li>
+      <% end %>
+    </ol>
+    </li>
+  <% end %> 
+</ul>

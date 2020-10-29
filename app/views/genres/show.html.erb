@@ -1,0 +1,7 @@
+<h1><%= @genre.name %> - <%= pluralize(@genre.games.count, "games") %></h1>
+
+<ul>
+  <% @genre.games.each do |game| %>
+    <li><%= link_to game.title, game_path(game) %></li>
+  <% end %>
+</ul>
