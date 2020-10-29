@@ -2,7 +2,12 @@ class GamesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def new 
-        @game = Game.new
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @game = @user.posts.build
+        else
+            @game = Game.new
+        end
+            @game.build_genre
     end
 
     def create 
@@ -20,7 +25,7 @@ class GamesController < ApplicationController
     private 
 
     def game_params
-         params.require(:game).permit(:title, :description)
+         params.require(:game).permit(:title, :description, :genre_id, genre_attributes: [:name])
     end
 
 
