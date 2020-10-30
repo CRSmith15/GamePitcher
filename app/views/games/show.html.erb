@@ -14,7 +14,7 @@
   <h4>Recent Comments!</h4>
   <% @game.comments.order(updated_at: :desc).limit(5).each do |c| %>
     <li>
-      <strong><%= c.user.username %></strong> says "<%= link_to c.text, comment_path(c)%>" 
+      <strong><%= c.user.username %></strong> says "<%= link_to c.text, game_comment_path(c.game, c)%>" 
     </li>
     <% end %>
 <% end %>

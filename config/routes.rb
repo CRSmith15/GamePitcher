@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :games do 
-    resources :comments, only: [:new, :create, :index]
+    resources :comments
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
