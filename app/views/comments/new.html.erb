@@ -1,0 +1,22 @@
+<% if @comment.game %>
+<h1>New Comment for <%= @comment.game.title%>!</h1>
+<% else %>
+<h1>New Comment!</h1>
+<% end %>
+
+<%= form_for([@comment.game, @comment]) do |f|%>
+
+    <% if !@comment.game %>
+     <%= f.label :game %>
+     <%= f.collection_select :game_id, Game.all, :id, :title %>
+   <% else %>
+       <%= f.hidden_field :game_id %>
+   <% end %>
+   
+     <%= f.label :text %>
+     <%= f.text_field :text %>
+   
+   
+     <%= f.submit %>
+   
+<% end %>
