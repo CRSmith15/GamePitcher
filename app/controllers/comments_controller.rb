@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
         if params[:game_id] && @game = Game.find_by_id(params[:game_id])
             @comments = @game.comments 
         else
+            @error = "That game doesn't exist" if params[:game_id]
             @comments = Comment.all 
         end
     end
