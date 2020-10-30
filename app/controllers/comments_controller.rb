@@ -9,6 +9,16 @@ class CommentsController < ApplicationController
         end
     end
 
+    def new 
+        if params[:game_id] && @game = Game.find_by_id(params[:game_id])
+            @comment = @game.comments.build
+        else
+            @comment = Comment.new 
+        end
+        
+    end
+
+
     def create
         @comment = current_user.comments.build(comment_params)
         if @comment.save 

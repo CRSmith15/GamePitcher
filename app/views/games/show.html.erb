@@ -6,3 +6,15 @@
 
 <div><%= @game.description %></div>
 
+
+<p><%= link_to 'Add a new comment', new_game_comment_path(@game) %></p>
+
+<% if !@game.comments.empty? %>
+  <p><%= link_to 'See all comments', game_comments_path(@game) %>
+  <h4>Recent Comments!</h4>
+  <% @game.comments.order(updated_at: :desc).limit(5).each do |c| %>
+    <li>
+      <strong><%= c.user.username %></strong> says "<%= link_to c.text, game_comments_path(@game, c)%>" 
+    </li>
+    <% end %>
+<% end %>

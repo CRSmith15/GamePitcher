@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
 
     def index 
-        @genre = Genre.all.includes(:games)
+        @genres = Genre.all.includes(:games)
     end
 
     def show 
@@ -10,7 +10,7 @@ class GenresController < ApplicationController
 
     def new 
     end
-    
+
 
 
 end

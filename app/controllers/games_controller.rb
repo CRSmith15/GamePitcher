@@ -3,11 +3,11 @@ class GamesController < ApplicationController
 
     def new 
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @game = @user.posts.build
+            @game = @user.games.build
         else
             @game = Game.new
         end
-            @game.build_genre
+         @game.build_genre
     end
 
     def create 

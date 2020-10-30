@@ -1,0 +1,11 @@
+<% if @game %>
+  <h1>Comments for <%= @game.title%></h1>
+<% else %>
+  <h1>All Comments</h1>
+<% end %>
+
+<ul>
+<% @comments.each do |c|%>
+  <li><%= c.user.username%> says "<%= c.text%>" about this game: <strong><%= link_to c.game.title, game_path(c.game_id) %></strong></li>
+<% end %>
+</ul>
