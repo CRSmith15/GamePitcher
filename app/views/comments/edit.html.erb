@@ -1,0 +1,16 @@
+<h1>Edit Comment!</h1>
+
+<%= render partial: "layouts/errors", locals: {object: @comment} %>
+
+<%= form_for(@comment) do |x|%>
+
+  <%= x.label :game %>
+  <%= x.collection_select :game_id, Game.all, :id, :title %>
+
+  <%= x.label :text %>
+  <%= x.text_field :text %>
+
+
+  <%= x.submit %>
+
+<% end %>

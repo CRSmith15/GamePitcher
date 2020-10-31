@@ -1,3 +1,7 @@
 <h2><%= @comment.text%> - <%=link_to @comment.user.username, user_path(@comment.user)%></h2>
 
+<% if @comment.user == current_user %>
+  <%= link_to "Edit Comment", edit_comment_path(@comment)%>
+<% end %>
+
 <h4>See the game pitch here: <%= link_to @comment.game.title, game_path(@comment.game_id) %></h4>
