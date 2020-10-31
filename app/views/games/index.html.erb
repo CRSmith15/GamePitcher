@@ -1,4 +1,8 @@
+<% if @user %>
+  <h1>Your Games</h1>
+<% else %>
 <h1>All Game Pitches</h1>
+<% end %>
 
 <% @games.each do |g| %>
     <ul>
