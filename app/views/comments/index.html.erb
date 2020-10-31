@@ -6,6 +6,6 @@
 
 <ul>
 <% @comments.each do |c|%>
-  <li><%= c.user.username%> says "<%= c.text%>" about this game: <strong><%= link_to c.game.title, game_path(c.game_id) %></strong><%= link_to "See the comment", comment_path(c)%></li>
+  <li><%= c.user.username%> says "<%= c.text%>" about this game: <strong><%= link_to c.game.title, game_path(c.game_id) %></strong> - <%= link_to "See the comment", comment_path(c)%></li>
 <% end %>
 </ul>

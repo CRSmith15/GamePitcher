@@ -7,6 +7,8 @@ class Game < ApplicationRecord
   validates :title, :description, presence: true
   validate :pitch_limit, :on => :create
 
+  scope :alpha, -> { order(:title) }
+
 
   def pitch_limit 
     #binding.pry

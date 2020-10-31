@@ -1,6 +1,9 @@
+<h1>All Genres!</h1>
+
+
 <ul>
   <% @genres.each do |g| %>
-    <li><%= link_to g.name, genre_path(g) %>
+    <li><h2><%= link_to g.name, genre_path(g) %></h2>
     <ol>
       <% g.games.each do |game| %>
         <li><%= link_to game.title, game_path(game) %></li>
