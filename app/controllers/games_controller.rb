@@ -21,7 +21,13 @@ class GamesController < ApplicationController
     end
 
     def index 
-        @games = Game.all 
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @games = @user.games
+        else
+            @error = "That user does not exist" if params[:user_id]
+            @games = Game.all
+        end
+
     end
 
     def show 
