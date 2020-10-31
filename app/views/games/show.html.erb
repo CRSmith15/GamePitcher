@@ -3,6 +3,10 @@
 
 <h3>Genre: <%= @game.genre.try(:name) %></h3>
 
+<% if @game.user == current_user %>
+<h4><%= link_to "Edit Your Pitch", edit_game_path(@game)%></h4>
+<% end %>
+
 
 <div><%= @game.description %></div>
 
@@ -11,7 +15,7 @@
 
 <% if !@game.comments.empty? %>
   <p><%= link_to 'See all comments', game_comments_path(@game) %>
-  <h4>Recent Comments!</h4>
+  <h4>5 Most Recent Comments!</h4>
   <% @game.comments.order(updated_at: :desc).limit(5).each do |c| %>
     <li>
       <strong><%= c.user.username %></strong> says "<%= link_to c.text, game_comment_path(c.game, c)%>" 

@@ -35,6 +35,24 @@ class GamesController < ApplicationController
         redirect_to games_path if !@game
     end
 
+    def edit
+        @game = Game.find_by_id(params[:id])
+        redirect_to games_path if !@game || @game.user != current_user
+        @game.build_genre if @game.genre 
+    end
+
+    def update 
+        @game = Game.find_by(id: params[:id])
+        redirect_to games_path if !@game || @game.user != current_user
+        if @game.update(game_params)
+            redirect_to game_path(@game)
+        else
+            render :edit 
+        end
+    end
+    
+
+
 
 
 
