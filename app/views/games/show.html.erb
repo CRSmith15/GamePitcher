@@ -4,11 +4,17 @@
 <h3>Genre: <%= @game.genre.try(:name) %></h3>
 
 <% if @game.user == current_user %>
-<h4><%= link_to "Edit Your Pitch", edit_game_path(@game)%></h4>
+<h4><%= link_to "Edit Your Pitch", edit_game_path(@game)%></h4><br>
+<%= form_tag action=(game_path(@game)), :method => :delete do %>
+  <button type="submit" class="destroy">Delete Game Pitch</button>
+  <% end %>
 <% end %>
 
 
-<div><%= @game.description %></div>
+<div>
+  <h4>Game Description:</h4>
+  <p><%= @game.description %></p>
+</div>
 
 
 <p><%= link_to 'Add a new comment', new_game_comment_path(@game) %></p>

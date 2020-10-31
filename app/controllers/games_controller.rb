@@ -50,7 +50,13 @@ class GamesController < ApplicationController
             render :edit 
         end
     end
-    
+
+    def destroy 
+        @game = Game.find_by_id(params[:id])
+        @game.destroy 
+        redirect_to user_games_path(@game.user)
+    end
+
 
 
 
