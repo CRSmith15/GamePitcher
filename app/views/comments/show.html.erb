@@ -2,6 +2,10 @@
 
 <% if @comment.user == current_user %>
   <%= link_to "Edit Comment", edit_comment_path(@comment)%>
+  <br>
+  <%= form_tag action=(comment_path(@comment)), :method => :delete do %>
+    <button type="submit" class="destroy">Delete Comment</button>
+  <% end %>
 <% end %>
 
 <h4>See the game pitch here: <%= link_to @comment.game.title, game_path(@comment.game_id) %></h4>
