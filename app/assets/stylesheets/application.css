@@ -47,3 +47,12 @@
  .nav li a:hover {
      background-color: #111;
  }
+
+ img {
+     float: left;
+     
+ }
+
+ h1 {
+     text-decoration: underline green;
+ }
