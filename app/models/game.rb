@@ -11,7 +11,6 @@ class Game < ApplicationRecord
 
 
   def pitch_limit 
-    #binding.pry
     todays_pitches = user.games.select do |g|
       g.created_at.try(:to_date) == Date.today
     end
