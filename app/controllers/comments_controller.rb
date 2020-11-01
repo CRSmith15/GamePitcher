@@ -64,7 +64,7 @@ class CommentsController < ApplicationController
     end
 
     def set_comment 
-        @comment = Comment.find_by_id(params[:id])
+        @comment = Comment.find_by(id: params[:id])
         redirect_to comments_path if !@comment
     end
 
