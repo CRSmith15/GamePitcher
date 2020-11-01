@@ -2,7 +2,7 @@ class GamesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def new 
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+        if match_user
             @game = @user.games.build
         else
             @game = Game.new
@@ -21,7 +21,7 @@ class GamesController < ApplicationController
     end
 
     def index 
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+        if match_user
             @games = @user.games.alpha
         else
             @error = "That user does not exist" if params[:user_id]
@@ -31,19 +31,19 @@ class GamesController < ApplicationController
     end
 
     def show 
-        @game = Game.find_by_id(params[:id])
-        redirect_to games_path if !@game
+        set_game
     end
+    
 
     def edit
-        @game = Game.find_by_id(params[:id])
-        redirect_to games_path if !@game || @game.user != current_user
+        set_game
+        redirect_to games_path if @game.user != current_user
         @game.build_genre if @game.genre 
     end
 
     def update 
-        @game = Game.find_by(id: params[:id])
-        redirect_to games_path if !@game || @game.user != current_user
+        set_game
+        redirect_to games_path if @game.user != current_user
         if @game.update(game_params)
             redirect_to game_path(@game)
         else
@@ -65,7 +65,16 @@ class GamesController < ApplicationController
     private 
 
     def game_params
-         params.require(:game).permit(:title, :description, :genre_id, genre_attributes: [:name])
+        params.require(:game).permit(:title, :description, :genre_id, genre_attributes: [:name])
+    end
+
+    def match_user 
+        params[:user_id] && @user = User.find_by_id(params[:user_id])
+    end
+
+    def set_game 
+        @game = Game.find_by_id(params[:id])
+        redirect_to games_path if !@game
     end
 
 
