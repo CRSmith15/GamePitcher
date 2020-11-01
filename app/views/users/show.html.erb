@@ -2,10 +2,7 @@
 
 <h2>Your games!</h2>
 
-<ul>
-  <% @user.games.each do |g| %>
-    <li><%= link_to g.title, game_path(g) %></li>
-  <% end %>
+<%= render partial: "/games/games", locals: {games: @user.games} %>
 
 <%= form_tag("/logout", method: 'delete') do %>
     <%= submit_tag "Logout"%>

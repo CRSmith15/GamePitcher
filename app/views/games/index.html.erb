@@ -1,7 +1,3 @@
 <h1><%= show_games_header %></h1>
 
-<% @games.each do |g| %>
-    <ul>
-      <li><a href="/games/<%= g.id %>"><%= g.title %></li>
-    </ul>
-<% end %>
+<%= render partial: "games", locals: {games: @games} %>
