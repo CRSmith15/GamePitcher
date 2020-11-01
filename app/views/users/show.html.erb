@@ -1,9 +1,18 @@
-<h1>Hello <%= @user.username %>!</h1>
+<% if @user == current_user %>
+  <h1>Hello <%= @user.username %>!</h1>
 
-<h2>Your games!</h2>
+  <%= form_tag("/logout", method: 'delete') do %>
+    <%= submit_tag "Logout"%>
+  <% end %>
+  <br>
+
+  <h2>Your Games:</h2>
+<% else %>
+
+  <h1><%= @user.username %>'s Page!</h1>
+
+  <h2><%= @user.username%>'s Game Pitches!</h2>
+<% end %>
 
 <%= render partial: "/games/games", locals: {games: @user.games} %>
 
-<%= form_tag("/logout", method: 'delete') do %>
-    <%= submit_tag "Logout"%>
-<% end %>
