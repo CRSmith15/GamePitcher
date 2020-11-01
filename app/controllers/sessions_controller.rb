@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController 
     def home 
+        @user = current_user
     end
 
     def new 
@@ -22,7 +23,6 @@ class SessionsController < ApplicationController
             u.username = auth["info"]["first_name"]
             u.password = SecureRandom.hex(12)
         end
-        binding.pry
         if @user.save 
             session[:user_id] = @user.id
             redirect_to user_path(@user)

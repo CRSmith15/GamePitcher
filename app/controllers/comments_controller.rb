@@ -31,18 +31,17 @@ class CommentsController < ApplicationController
     end
 
     def show 
-        @comment = Comment.find_by_id(params[:id])
-        redirect_to comments_path if !@comment 
+        set_comment
     end
 
     def edit 
-        @comment = Comment.find_by_id(params[:id])
-        redirect_to comments_path if !@comment || @comment.user != current_user
+        set_comment
+        redirect_to comments_path if @comment.user != current_user
     end
 
     def update
-        @comment = Comment.find_by(id: params[:id])
-        redirect_to comments_path if !@comment || @comment.user != current_user
+        set_comment
+        redirect_to comments_path if @comment.user != current_user
         if @comment.update(comment_params)
           redirect_to comment_path(@comment)
         else
@@ -63,6 +62,12 @@ class CommentsController < ApplicationController
     def comment_params
         params.require(:comment).permit(:text, :game_id)
     end
+
+    def set_comment 
+        @comment = Comment.find_by_id(params[:id])
+        redirect_to comments_path if !@comment
+    end
+
 
 
 
