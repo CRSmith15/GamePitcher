@@ -1,4 +1,4 @@
-<h1>Genre: <%= @genre.name %> - <%= pluralize(@genre.games.count, "game(s)") %></h1>
+<h1>Genre: <%= @genre.name %> - <%= pluralize(@genre.games.count, "game") %></h1>
 <div class="show_genre">
 <ol>
   <% @genre.games.each do |game| %>

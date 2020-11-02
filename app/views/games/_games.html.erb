@@ -1,5 +1,7 @@
+<div class="games">
 <% @games.each do |g| %>
     <ul>
-      <li><a href="/games/<%= g.id %>"><%= g.title %></li>
+      <li><a href="/games/<%= g.id %>"><%= g.title %></a> - Genre: <%= g.genre.name %><br>
     </ul>
 <% end %>
+</div>

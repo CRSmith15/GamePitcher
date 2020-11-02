@@ -1,7 +1,7 @@
 <h1><%= @game.title %></h1>
 <h2>By: <%= link_to @game.user.username, user_path(@game.user)%></h2>
 
-<h3>Genre: <%= @game.genre.try(:name) %></h3>
+<h3>Genre: <%= link_to @game.genre.try(:name), genre_path(@game.genre) %></h3>
 
 <% if @game.user == current_user %>
 <h4><%= link_to "Edit Your Pitch", edit_game_path(@game)%></h4><br>
