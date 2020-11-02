@@ -55,4 +55,24 @@
 
  h1 {
      text-decoration: underline green;
+     font-size: 230%;
  }
+
+ .genre ul a {
+     text-decoration: underline;
+     color: black;
+ }
+
+ .genre ul {
+    list-style-type: none;
+    padding: 0px 10px;
+ }
+
+ .genre ol a {
+     text-decoration: none;
+ }
+
+ .show_genre ol li a {
+    color: black;
+    font-size: 135%;
+}

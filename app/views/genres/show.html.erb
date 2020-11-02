@@ -1,7 +1,8 @@
-<h1><%= @genre.name %> - <%= pluralize(@genre.games.count, "games") %></h1>
-
-<ul>
+<h1>Genre: <%= @genre.name %> - <%= pluralize(@genre.games.count, "game(s)") %></h1>
+<div class="show_genre">
+<ol>
   <% @genre.games.each do |game| %>
-    <li><%= link_to game.title, game_path(game) %></li>
+    <li><%= link_to game.title, game_path(game) %></li><br>
   <% end %>
-</ul>
+</ol>
+</div>

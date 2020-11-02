@@ -1,6 +1,6 @@
 <h1>All Genres!</h1>
 
-
+<div class="genre">
 <ul>
   <% @genres.each do |g| %>
     <li><h2><%= link_to g.name, genre_path(g) %></h2>
@@ -12,3 +12,4 @@
     </li>
   <% end %> 
 </ul>
+</div>
