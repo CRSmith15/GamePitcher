@@ -81,3 +81,28 @@
     color: black;
     text-decoration: none;
 }
+
+.button a{
+    font: bold 13px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+  }
+
+  .game_by a {
+      text-decoration: none;
+      color: black;
+  }
+
+  .game_genre a {
+      color: black;
+  }
+
+  .description h4 {
+      text-decoration: underline;
+  }
